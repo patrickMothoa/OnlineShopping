@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,8 @@ export class AppComponent {
 
   SammaryCart = []
 
+  Talamount: any = 0;
+
     //mylist
   newItem : string =""
   newDescription: string = ""
@@ -40,6 +43,9 @@ export class AppComponent {
         if(this.addToCart.length > 0){
            this.emptyCart = false
         }
+                // for adding in total money
+        this.Talamount = this.Talamount + buys.Prices;
+
      }
 
      // sammary
@@ -59,36 +65,12 @@ export class AppComponent {
     this.newQuantity = null;
     this.newPrice = null;
   }
-
+      // delete carts entries
   delete(samBuys){
     let index = this.MyCart.indexOf(samBuys)
     this.MyCart.splice(index, 1);
-  }
 
-   //for increasing
-  increasQua(Staff){
-    if(Staff.NumOf == Staff.quantity){
-      return alert("Can't add more")
-    }else{
-      Staff.quantity++
-      this.newPrice += Staff.Price
-    }
+    this.Talamount = this.MyCart[index].Prices  -  this.MyCart[index].Prices;
   }
-     // total price calc
-  TotalPrice(){
-    this.newPrice = 0;
-     for(let newp of this.Shop){
-       this.newPrice += newp. Prices*newp.Quantity
-     }
- }
   
-  /*
-  editShop(buys, ToCart){
-      let index = this.Shop.indexOf(buys)
-      this.Shop[index].addnewItem = prompt("Edit itenName:");
-      this.Shop[index].addnewDescription = prompt("Edit Description")
-      this.Shop[index].addnewQuantity = prompt("Edit Quantity:");
-      this.Shop[index].addnewPrice = prompt("Edit Prices:"); 
-    
-}*/ 
 }

@@ -21,22 +21,12 @@
        <!--Mat for shopping card -->
        <div>
           <h1><img src="assets\picart.jpg" alt="trolley" width="50px" height="70px"/> Shopping Cart.</h1><br>
-          <button (click) = "CreateSam(sumBuys)" mat-raised-button color="warn">Sammary</button>
   <mat-card style="background-color: skyblue;" *ngFor = "let Staff of MyCart">
       <img src="..\assets\{{Staff.itemName}}" width="50px" height="50px"/><br>
       Prices: R{{Staff.Prices}}
       <button (click) = "delete(samBuys)" style="background-color: red;" mat-fab><mat-icon aria-hidden="false" aria-label="Example home icon">remove</mat-icon></button>
-  
-      <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input  [(ngModel)]="Staff.Quantity" (change)="TotalPrice(Staff)" matInput placeholder="number of items" value="">
-          </mat-form-field>
-        
-          <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Leave a comment"></textarea>
-          </mat-form-field>
-        </form> <button (click)="increasQua(Staff)" mat-raised-button>add</button>
-
+         <br>
+        <p>Quantity :</p><input type="text" [(ngModel)]="Staff.Quantity" (change)="TotalPrice(Staff)" ><button (click)="increasQua(Staff)" > + </button>
     
     </mat-card>
         </div>
@@ -47,8 +37,8 @@
 
         <!-- For my Sammary -->
     <mat-card style="background-color: greenyellow;">
-        <h2 style="text-align: center;"> Summary of My Purchases </h2>
-          Total Purchase: {{Price}}
+        <h2 style="text-align: center;"> Summary of My Purchase. </h2>
+          Total Purchase: R {{Talamount}}
       </mat-card>
 
 
