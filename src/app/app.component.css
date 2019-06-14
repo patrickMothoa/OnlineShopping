@@ -1,0 +1,10 @@
+
+#main{
+    background-color: antiquewhite;
+    height: 980px;
+}
+#header{
+    background-color: darkslategrey;
+    color: antiquewhite;
+    border-bottom: 4px solid aquamarine;
+}

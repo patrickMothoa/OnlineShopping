@@ -1,0 +1,58 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main" style="text-align:left">
+  <h1 id="header">
+    {{ title }}
+    <img src="assets\cart.png" alt="cart" width="50px" height="50px"/> 
+  </h1>
+
+  <mat-grid-list  cols="4" rowHeight="2:2" style="margin-bottom: 10px;" >
+
+    <mat-grid-tile *ngFor = "let buys of Shop">
+        <button mat-button (click) = "addToCart(buys)">
+            <img src="..\assets\{{buys.itemName}}" width="200px" height="200px"/><br>
+            <p>{{buys.Description}} | Quantity :{{buys.Quantity}}</p>
+            <h2 style="background-color:aqua">Price : R{{buys.Prices}}</h2>
+          </button>
+      </mat-grid-tile>
+   
+  </mat-grid-list  >
+  
+
+       <!--Mat for shopping card -->
+       <div>
+          <h1><img src="assets\picart.jpg" alt="trolley" width="50px" height="70px"/> Shopping Cart.</h1><br>
+          <button (click) = "CreateSam(sumBuys)" mat-raised-button color="warn">Sammary</button>
+  <mat-card style="background-color: skyblue;" *ngFor = "let Staff of MyCart">
+      <img src="..\assets\{{Staff.itemName}}" width="50px" height="50px"/><br>
+      Prices: R{{Staff.Prices}}
+      <button (click) = "delete(samBuys)" style="background-color: red;" mat-fab><mat-icon aria-hidden="false" aria-label="Example home icon">remove</mat-icon></button>
+  
+      <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input  [(ngModel)]="Staff.Quantity" (change)="TotalPrice(Staff)" matInput placeholder="number of items" value="">
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Leave a comment"></textarea>
+          </mat-form-field>
+        </form> <button (click)="increasQua(Staff)" mat-raised-button>add</button>
+
+    
+    </mat-card>
+        </div>
+
+        <div *ngIf = "emptyCart">
+                  <p style="background-color: red;"> Your Cart is Empty! </p>
+          </div>
+
+        <!-- For my Sammary -->
+    <mat-card style="background-color: greenyellow;">
+        <h2 style="text-align: center;"> Summary of My Purchases </h2>
+          Total Purchase: {{Price}}
+      </mat-card>
+
+
+  <form></form>
+</div>
+
+
