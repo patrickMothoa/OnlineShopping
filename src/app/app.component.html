@@ -10,38 +10,44 @@
     <mat-grid-tile *ngFor = "let buys of Shop">
         <button mat-button (click) = "addToCart(buys)">
             <img src="..\assets\{{buys.itemName}}" width="200px" height="200px"/><br>
-            <p>{{buys.Description}} | Quantity :{{buys.Quantity}}</p>
-            <h2 style="background-color:aqua">Price : R{{buys.Prices}}</h2>
+            <p>{{buys.Description}}</p>
+            <h2 style="background-color:grey">Price : R{{buys.Prices}}</h2>
           </button>
       </mat-grid-tile>
    
+      <div *ngIf = "Check">
+        
+      </div>
   </mat-grid-list  >
   
 
        <!--Mat for shopping card -->
        <div>
-          <h1><img src="assets\picart.jpg" alt="trolley" width="50px" height="70px"/> Shopping Cart.</h1><br>
+          <h1> Shopping Cart.</h1><br>
   <mat-card style="background-color: skyblue;" *ngFor = "let Staff of MyCart">
       <img src="..\assets\{{Staff.itemName}}" width="50px" height="50px"/><br>
-      Prices: R{{Staff.Prices}}
-      <button (click) = "delete(samBuys)" style="background-color: red;" mat-fab><mat-icon aria-hidden="false" aria-label="Example home icon">remove</mat-icon></button>
+      Price: R{{Staff.Prices}}
+      <button (click) = "delete(Staff)" style="background-color:skyblue;" mat-fab><mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon></button>
          <br>
-        <p>Quantity :</p><input type="text" [(ngModel)]="Staff.Quantity" (change)="TotalPrice(Staff)" ><button (click)="increasQua(Staff)" > + </button>
-    
+        <p>Number of items :</p><button (click)="DecQua(Staff)" > - </button><input type="text" [(ngModel)]="Staff.Quantity" (change)="TotalPrice(Staff)" ><button (click)="incQua(Staff)" > + </button>
+        
     </mat-card>
+  
+    <div *ngIf = "emptyCart">
+      <p style="background-color:yellowgreen;"> Your Cart is Empty! </p>
+</div>
+
+<!-- For my Sammary -->
+<mat-card style="background-color: blue;">
+<h2 style="text-align: center;"> Summary of My Purchase. </h2>
+    Total Purchase : R{{newPrice}} <br>
+    total items : {{newQuantity}}
+<!-- this method not working properly
+Total Purchase: R {{Talamount}}
+-->
+</mat-card>
         </div>
-
-        <div *ngIf = "emptyCart">
-                  <p style="background-color: red;"> Your Cart is Empty! </p>
-          </div>
-
-        <!-- For my Sammary -->
-    <mat-card style="background-color: greenyellow;">
-        <h2 style="text-align: center;"> Summary of My Purchase. </h2>
-          Total Purchase: R {{Talamount}}
-      </mat-card>
-
-
+  
   <form></form>
 </div>
 
